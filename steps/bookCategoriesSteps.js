@@ -27,3 +27,9 @@ Then('user should see {int} book categories', async function (int) {
   expect(totalOption).toBe(int);
 
 });
+
+Then('book category name {string} should be included in the list of book categories', async function (string) {
+  await BrowserUtility.sleep(2);
+  const options = await PageManager.booksPage.bookCategoriesDropDown.locator("option").allInnerTexts();
+  expect(options).toContain(string);
+});
